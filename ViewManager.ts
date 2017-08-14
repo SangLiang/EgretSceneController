@@ -37,6 +37,7 @@ class ViewManager {
                 this.currentScene = _temp;
 
                 target.addChild(_temp);
+                _temp.visible = true;
                 if(this.lastScene){
                     try{
                         this.lastScene.onExit();
