@@ -21,7 +21,7 @@ class ViewManager {
             return ViewManager._instance;
         }
     }
-
+   
     /**
      * 场景的切换
      * @param stageName 切换的场景name
@@ -63,11 +63,17 @@ class ViewManager {
      * @param stageName 场景名称
      * @param sceneClass 场景类
      */
-    public setScene(sceneClass:any,stageName:string = null):void{
-        let scene = new sceneClass();
-        if(stageName!=null){
-            scene.name = stageName;
+    public setScene(sceneClass:any,stageName:string ):void{
+        let isExist:boolean = false;
+        for(var i = 0; i<this.sceneList.length ; i++){
+            if(stageName == this.sceneList[i].name){
+                isExist = true;
+            }
         }
+        // 已经存在的场景判断
+        if(isExist) return;
+        let scene = new sceneClass();
+        scene.name = stageName;
         this.sceneList.push(scene);
     }
 }
